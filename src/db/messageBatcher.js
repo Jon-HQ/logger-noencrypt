@@ -24,7 +24,7 @@ function getMessage (messageID) {
   return {
     id: message[0],
     author_id: message[1],
-    content: aes.decrypt(message[2]),
+    content: message[2],
     attachment_b64: '',
     ts: Date.parse(message[4])
   }
@@ -33,7 +33,7 @@ function getMessage (messageID) {
 function updateMessage (messageID, content) {
   for (let i = 0; i < batch.length; i++) {
     if (batch[i][0] === messageID) {
-      batch[i][2] = aes.encrypt(content || 'None')
+      batch[i][2] = content
       break
     }
   }
