@@ -147,7 +147,7 @@ async function toggleLogBots (guildID) {
 async function updateMessageByID (id, content) {
   const batchMessage = await getMessageFromBatch(id)
   if (!batchMessage) {
-    return await pool.query('UPDATE messages SET content=$1 WHERE id=$2', [aes.encrypt(content || 'EMPTY STRING'), id])
+    return await pool.query('UPDATE messages SET content=$1 WHERE id=$2', [content, id])
   } else {
     updateBatchMessage(id, content)
   }
