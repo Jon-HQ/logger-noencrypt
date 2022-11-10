@@ -36,13 +36,13 @@ async function getMessageById (messageID) {
 }
 
 async function decryptUserDoc (userDoc) {
-  userDoc.names = JSON.parse(aes.decrypt(userDoc.names))
+  userDoc.names = JSON.parse(userDoc.names)
   return userDoc
 }
 
 async function decryptMessageDoc (message) {
-  message.content = aes.decrypt(message.content)
-  if (message.attachment_b64) message.attachment_b64 = aes.decrypt(message.attachment_b64)
+  message.content = message.content
+  if (message.attachment_b64) message.attachment_b64 = message.attachment_b64
   return message
 }
 
