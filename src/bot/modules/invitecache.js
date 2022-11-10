@@ -7,7 +7,7 @@ module.exports = {
     if (!invites) return []
     return JSON.parse(invites).map(invite => {
       return {
-        code: aes.decrypt(invite.code),
+        code: invite.code,
         channel: invite.channel,
         uses: invite.uses
       }
